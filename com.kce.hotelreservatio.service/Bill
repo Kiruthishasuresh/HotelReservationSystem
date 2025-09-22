@@ -1,0 +1,11 @@
+package com.kce.hotelreservation.service;
+public class Bill {
+    private double amount;
+    private double tax = 0.1;
+    public Bill(double amount) {
+        this.amount = amount;
+    }
+    public double getTotal() {
+        return amount + (amount * tax);
+    }
+}
