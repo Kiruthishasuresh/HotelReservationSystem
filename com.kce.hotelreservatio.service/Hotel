@@ -1,0 +1,80 @@
+package com.kce.hotelreservation.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import com.kce.hotelreservation.administrator.Room;
+import com.kce.hotelreservation.Customer.Customer;
+
+public class Hotel {
+    private List<Room> rooms = new ArrayList<>();
+    private List<Customer> customers = new ArrayList<>();
+    private List<Booking> bookings = new ArrayList<>();
+    private int nextBookingId = 1;
+
+    public void addRoom(int roomNumber, double price) {
+        rooms.add(new Room(roomNumber, price));
+        System.out.println("Room is add successfully\n");
+    }
+
+    public void addCustomer(Customer customer) {
+        customers.add(customer);
+        System.out.println("Customer is add successfully\n");
+    }
+
+    public void showAvailableRooms() {
+        for (Room room : rooms)	
+        {
+            System.out.println("Room" + room.getRoomno() + "\nPrice: " + room.getPrice() + "\nAvailable: " + room.getavailable());
+        }
+        }
+    public void reserveRoom(int customerId, int roomNumber) {
+        Customer customer = findCustomer(customerId);
+        Room room = findRoom(roomNumber);
+        
+        if (customer != null && room != null && room.getavailable()) 
+        {
+            room.setAvailable(false);
+            Booking booking = new Booking(nextBookingId++, room, customer);
+            bookings.add(booking);
+            double price = room.getPrice() * (1 - customer.getDiscount());
+            Bill bill = new Bill(price);
+            System.out.println("Booking Confirmed\nID: " + booking.getBookingId() + "\nCustomer: " + customer.getCustomname() + "\nRoom: " + room.getRoomno() + "\nAmount with tax: " + bill.getTotal());
+        } 
+        else
+        {
+            System.out.println("Booking process failed! please do it again\n");
+        }
+    }
+
+    public void cancelRoom(int bookingId) {
+        for (Booking booking : bookings) {
+        	
+            if (booking.getBookingId() == bookingId) 
+            {
+                booking.getRoom().setAvailable(true);
+                bookings.remove(booking);
+                System.out.println("Booking for Room " + booking.getRoom().getRoomno() + " cancelled Successfully.\n");
+                return;
+            }
+        }
+        System.out.println("Your not booked any Rooms.\n");
+    }
+
+    private Customer findCustomer(int id) 
+    {
+        for (Customer customer : customers)
+            {
+        	if (customer.getCustomid() == id) 
+        		return customer;
+            }
+        return null;
+    }
+
+    private Room findRoom(int number) {
+        for (Room room : rooms) {
+            if (room.getRoomno() == number) 
+            	return room;
+            }
+        return null;
+    }
+}
