@@ -1,0 +1,30 @@
+package com.kce.hotelreservation.Customer;
+public class Customer{
+	private int Customid;
+	private String Customname;
+	public Customer(int Customid,String Customname) {
+		this.Customid=Customid;
+		this.Customname=Customname;
+	}
+	public void setCustomid(int Customid) {
+		this.Customid=Customid;
+	}
+	public void setCustomname(String Customname) {
+		this.Customname=Customname;
+	}
+	public int getCustomid() {
+		return Customid;
+	}
+	public String  getCustomname() {
+		return Customname;
+	}
+	public double getDiscount() {
+		return 0;
+	}
+	@Override
+	public String toString() {
+	    return "Customer ID : " + Customid + "\n Name: " + Customname;
+	}
+
+	
+}
