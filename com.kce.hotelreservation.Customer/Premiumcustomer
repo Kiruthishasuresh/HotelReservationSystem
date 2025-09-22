@@ -1,0 +1,11 @@
+package com.kce.hotelreservation.Customer;
+public class PremiumCustomer extends Customer {
+    public PremiumCustomer(int customid, String customname) {
+        super(customid, customname);
+   
+    }
+    public double getDiscount() {
+        return 0.10;
+    }
+}
+
