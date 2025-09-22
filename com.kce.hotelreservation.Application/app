@@ -1,0 +1,60 @@
+package com.kce.hotelreservation.Application;
+import java.util.Scanner;
+import com.kce.hotelreservation.service.Hotel;
+import com.kce.hotelreservation.Customer.Customer;
+import com.kce.hotelreservation.Customer.PremiumCustomer;
+public class app {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Hotel hotel = new Hotel();
+        System.out.println("Hotel Reservation System");
+        while (true) {
+            System.out.println("Choices:\n1.Add Rooms\n2.Add Customer\n3.Book the Room\n4.Cancel Reservation\n5.Display Available Rooms\n6.Exit");
+            System.out.print("Enter choice: ");
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter room number: ");
+                    int num = sc.nextInt();
+                    System.out.print("Enter price: ");
+                    double price = sc.nextDouble();
+                    hotel.addRoom(num, price);
+                    break;
+                case 2:
+                    System.out.print("Enter customer ID: ");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Enter name: ");
+                    String name = sc.nextLine();
+                    System.out.print("Premium customer? (yes/no): ");
+                    String p = sc.next();
+                    if (p.equalsIgnoreCase("yes"))
+                        hotel.addCustomer(new PremiumCustomer(id, name));
+                    else
+                        hotel.addCustomer(new Customer(id, name));
+                    break;
+                case 3:
+                    System.out.print("Enter customer ID: ");
+                    int cid = sc.nextInt();
+                    System.out.print("Enter room number: ");
+                    int rid = sc.nextInt();
+                    hotel.reserveRoom(cid, rid);
+                    break;
+                case 4:
+                    System.out.print("Enter booking ID: ");
+                    int bid = sc.nextInt();
+                    hotel.cancelRoom(bid);
+                    break;
+                case 5:
+                    hotel.showAvailableRooms();
+                    break;
+                case 6:
+                    System.out.println("Thank you! See you again.");
+                    sc.close();
+                    return;
+                default:
+                    System.out.println("Invalid choice.Go with Another Choice");
+            }
+        }
+    }
+}
