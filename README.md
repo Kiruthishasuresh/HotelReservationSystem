@@ -1,7 +1,7 @@
 Hotel Reservation System is a Java-based console application that manages hotel rooms, customers, and bookings efficiently. It allows adding rooms, registering customers, reserving and canceling bookings, and viewing available rooms. The system supports both regular and premium customers, with discounts applied for premium users. Bills are calculated including tax and any applicable discount. Designed with object-oriented principles, the project uses separate classes for rooms, customers, bookings, and hotel operations for clarity and maintainability.
 
  UML Diagram:
-<img width="2230" height="2400" alt="diagram(f)" src="https://github.com/user-attachments/assets/b85d818b-6c09-40f1-a088-8944cd9d95ed" />
+<img width="1186" height="834" alt="image" src="https://github.com/user-attachments/assets/3737b214-70dd-4ab6-bcca-ead5efe455a1" />
 
 
 OUTPUT:
