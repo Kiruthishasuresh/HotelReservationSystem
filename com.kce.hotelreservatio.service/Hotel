@@ -1,26 +1,21 @@
 package com.kce.hotelreservation.service;
-
 import java.util.ArrayList;
 import java.util.List;
 import com.kce.hotelreservation.administrator.Room;
 import com.kce.hotelreservation.Customer.Customer;
-
 public class Hotel {
     private List<Room> rooms = new ArrayList<>();
     private List<Customer> customers = new ArrayList<>();
     private List<Booking> bookings = new ArrayList<>();
     private int nextBookingId = 1;
-
     public void addRoom(int roomNumber, double price) {
         rooms.add(new Room(roomNumber, price));
         System.out.println("Room is add successfully\n");
     }
-
     public void addCustomer(Customer customer) {
         customers.add(customer);
         System.out.println("Customer is add successfully\n");
     }
-
     public void showAvailableRooms() {
         for (Room room : rooms)	
         {
@@ -45,10 +40,8 @@ public class Hotel {
             System.out.println("Booking process failed! please do it again\n");
         }
     }
-
     public void cancelRoom(int bookingId) {
-        for (Booking booking : bookings) {
-        	
+        for (Booking booking : bookings) {   	
             if (booking.getBookingId() == bookingId) 
             {
                 booking.getRoom().setAvailable(true);
@@ -59,7 +52,6 @@ public class Hotel {
         }
         System.out.println("Your not booked any Rooms.\n");
     }
-
     private Customer findCustomer(int id) 
     {
         for (Customer customer : customers)
@@ -69,7 +61,6 @@ public class Hotel {
             }
         return null;
     }
-
     private Room findRoom(int number) {
         for (Room room : rooms) {
             if (room.getRoomno() == number) 
