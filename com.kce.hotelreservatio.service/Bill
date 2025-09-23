@@ -6,6 +6,7 @@ public class Bill {
         this.amount = amount;
     }
     public double getTotal() {
-        return amount + (amount * tax);
+         private double total =amount + (amount * tax);
+        return total;
     }
 }
