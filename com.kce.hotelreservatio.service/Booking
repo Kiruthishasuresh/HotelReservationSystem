@@ -1,23 +1,18 @@
 package com.kce.hotelreservation.service;
-
 import com.kce.hotelreservation.administrator.Room;
 import com.kce.hotelreservation.Customer.Customer;
-
 public class Booking {
     private int bookingId;
     private Room room;
     private Customer customer;
-
     public Booking(int bookingId, Room room, Customer customer) {
         this.bookingId = bookingId;
         this.room = room;
         this.customer = customer;
     }
-
     public int getBookingId() {
         return bookingId;
     }
-
     public Room getRoom() {
         return room;
     }
