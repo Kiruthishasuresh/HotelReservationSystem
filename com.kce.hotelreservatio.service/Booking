@@ -16,7 +16,6 @@ public class Booking {
     public Room getRoom() {
         return room;
     }
-
     public Customer getCustomer() {
         return customer;
     }
